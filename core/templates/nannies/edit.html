@@ -1,0 +1,39 @@
+{% extends 'layout/base.html' %}
+<!-- 姓名、性別、電話、暱稱、說明 -->
+{% block content %}
+    <h1>更新保母</h1>
+    <form action="{% url 'nannies:show' nanny.id %}" method="post"> 
+    <!-- Django 中的模板語法，動態生成 URL，接受一個路徑名稱，接收一個 nanny.id 參數，指向 id -->
+    {% csrf_token %}
+    <div>
+        <label for="name">姓名</label>
+        <input type="text" class="text-field" id="name" name="name" value="{{ nanny.id }}">
+    </div>
+    <!-- id 用於在JS裡面定位操作，為唯一 -->
+    <!-- name 表單被提交，名稱作為傳遞輸入值符號 -->
+    <!-- value 模板渲染時，輸入框顯示 nanny.xxx 的值 -->
+    <div>
+        <label for="name">性別</label>
+        <input type="text" class="text-field" id="gender" name="gender" value="{{ nanny.gender }}">
+    </div>
+
+    <div>
+        <label for="tel">電話</label>
+        <input type="text" class="text-field" id="tel" name="tel" value="{{ nanny.tel }}">
+    </div>
+
+    <div>
+        <label for="nickname">暱稱</label>
+        <input type="text" class="text-field" id="nickname" name="nickname" value="{{ nanny.nickname }}">
+    </div>
+
+    <div>
+        <label for="description">說明</label>
+        <textarea class="text-field" id="description" name="description">{{ nanny.description }}</textarea>
+        <!-- textarea 為多行文本輸入框 -->
+    </div>
+
+    <input type="submit" value="更新">
+    <!-- input 按鈕，提交更新 -->
+    </form>
+{% endblock %}

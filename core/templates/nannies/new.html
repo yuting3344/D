@@ -1,0 +1,37 @@
+<!-- 跟 edit.html 類似 -->
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <h1>新增保母</h1>
+    <form action="{% url 'nannies:add' %}" method="post">
+        {% csrf_token %}
+
+        <div>
+            <label for="name">姓名</label>
+            <input type="text" class="text-field" name="name" id="name">
+        </div>
+
+        <div>
+            <label for="gender">性別</label>
+            <input type="text" class="text-field" name="gender" id="gender">
+        </div>
+
+        <div>
+            <label for="tel">電話</label>
+            <input type="tel" name="tel" id="tel">
+        </div>
+
+        <div>
+            <label for="nickname">暱稱</label>
+            <input type="text" class="text-field" name="nickname" id="nickname">
+        </div>
+
+        <div>
+            <label for="description">說明</label>
+            <textarea class="text-field" id="description" name="description"></textarea>
+        </div>
+
+        <input type="submit" value="新增">
+
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hello Nanny{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <!-- {% static 'styles/style.css' %} 是一個靜態文件的 URL -->
+    <!-- 引用名為 "style.css" 的 CSS 樣式表 -->
+    <!-- static 是 Django 中用於管理靜態文件的內建模板標記，生成正確的 URL，以便在網頁中引用靜態文件。 -->
+</head>
+<body>
+    <!-- {% load static %} 是 Django 模板中的一個標籤，用於加載靜態文件處理器。 -->
+    <!-- 當您在模板中用標籤來引用靜態文件（如圖像、CSS 樣式表、JavaScript 等）時，您需要先加載靜態文件處理器。 -->
+    {% include "shared/navbar.html" %}
+    <main>
+        {% block content %}{% endblock %}
+        {% include "shared/footer.html" %}
+        <!-- 語法的作用是將 "shared/footer.html" 模板中的內容'包含'到當前模板的位置 -->
+        <!-- 每個頁面的底部包含相同的頁腳（footer） -->
+    </main>
+    
+</body>
+</html>

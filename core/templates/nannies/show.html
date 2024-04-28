@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <h1>{{ nanny.name }}</h1>
+    <p>{{ description }}</p>
+    <a href="{% url 'nannies:edit' nanny.id %}"></a>
+
+    <form action="{% url 'nannies:delete' nanny.id %}" method="post">
+        {% csrf_token %}
+        <button>刪除</button>
+    </form>
+{% endblock %} 
